@@ -4,6 +4,7 @@ const deleteBtn = document.querySelector("#deletebtn");
 const confirmBtn = document.querySelector("#addbtn");
 const expensesList = document.querySelector("#renduForm");
 const totalExpensesOutput = document.querySelector("#totalExpenses");
+const alert = document.createElement("ion-alert");
 
 let totalExpenses = 0;
 
@@ -21,7 +22,12 @@ confirmBtn.addEventListener("click", () => {
     enteredAmount <= 0 ||
     enteredAmount.trim().length <= 0
   ) {
-    return;
+    alert.header = "Valeur Invalide";
+    alert.message = "Merci de rentrer une valeur valide";
+    alert.buttons = ['ok'];
+
+    document.body.appendChild(alert);
+    return alert.present();
   }
 
   const elementList = document.createElement("ion-item");
