@@ -18,8 +18,8 @@
         <!---header avec tootbar-->
 
         <ion-header>
-            <ion-toolbar>
-                <ion-title color="primary">Dépense Budgetaire</ion-title>
+            <ion-toolbar color="primary">
+                <ion-title >Dépense Budgetaire</ion-title>
             </ion-toolbar>
 
         </ion-header>
@@ -29,7 +29,7 @@
         <ion-content>
             <ion-grid>
                 <ion-row>
-                    <ion-col>
+                    <ion-col size-md="6" offset-md="3">
                         <!--ion-card-->
                         <ion-card>
                             <ion-card-header>
@@ -37,21 +37,40 @@
                             </ion-card-header>
                             <ion-card-content>
                                 <ion-item>
-                                    <ion-label class="floating">Raison de dépense</ion-label>
-                                    <ion-input type="text"></ion-input>
+                                    <ion-label position="floating">Raison de dépense</ion-label>
+                                    <ion-input type="text" id="reasoninput"></ion-input>
                                 </ion-item>
                                 <ion-item>
-                                    <ion-label class="floating">Montant de dépense</ion-label>
-                                    <ion-input type="number"></ion-input>
+                                    <ion-label position="floating">Montant de dépense</ion-label>
+                                    <ion-input type="number" id="amountinput"></ion-input>
                                 </ion-item>
+                                <div class="ion-margin-vertical ion-text-right">
+                                    <ion-button id="deletebtn" fill="outline" color="danger"> <ion-icon slot="start"
+                                            name="trash-outline"></ion-icon> Effacer</ion-button>
+                                    <ion-button id="addbtn"> <ion-icon slot="start"
+                                            name="add-circle-outline"></ion-icon>Ajouter une dépense</ion-button>
+                                </div>
                             </ion-card-content>
                         </ion-card>
+                    </ion-col>
+                </ion-row>
+
+                <!--row affichage données-->
+                <ion-row>
+                    <ion-col size-md="6" offset-md="3">
+                        <ion-list id="renduForm"></ion-list>
+                    </ion-col>
+                </ion-row>
+                <!--total expenses-->
+                <ion-row>
+                    <ion-col size-md="6" offset-md="3">
+                        <p>Total : £<span id="totalExpenses"></span></p>
                     </ion-col>
                 </ion-row>
             </ion-grid>
         </ion-content>
     </ion-app>
-
+    <script src="app.js"></script>
 </body>
 
 </html>
