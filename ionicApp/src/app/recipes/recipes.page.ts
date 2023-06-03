@@ -1,30 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Recipes } from './recipes.model';
+import { ServicesService } from '../services.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.page.html',
   styleUrls: ['./recipes.page.scss'],
 })
-export class RecipesPage implements OnInit {
+export class RecipesPage implements OnInit, OnDestroy {
+  recipes: Recipes[] = [];
 
-  recipes: Recipes[] = [
-    {
-      id: "r1",
-      title: "Boulettes de viande",
-      imageurl: "https://images.pexels.com/photos/12720645/pexels-photo-12720645.jpeg?auto=compress&cs=tinysrgb&w=600",
-      ingredients:["viande haché", "spaghetti", "tomate"]
-    },
-    {
-      id: "r2",
-      title: "Salade viennoise",
-      imageurl: "https://images.pexels.com/photos/16854489/pexels-photo-16854489/free-photo-of-nourriture-assiette-salade-tomates.jpeg?auto=compress&cs=tinysrgb&w=600",
-      ingredients:["Salade", "avocat", "tomate"]
-    },
-  ];
-  constructor() { }
+  constructor(private service: ServicesService, private route: Router) {}
 
   ngOnInit() {
+    
   }
 
+  ionViewWillEnter(){
+    
+  }
+  ionViewDidEnter() {
+    this.recipes = this.service.getAllservice();
+  }
+
+  ngOnDestroy() {}
+
+  VoiDetails(id: any) {
+    this.route.navigate(['/', id]);
+  }
 }
